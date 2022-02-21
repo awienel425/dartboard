@@ -8,9 +8,9 @@ import org.junit.jupiter.api.Test
 class WinnablePlayCalculatorTest {
     private val calculationServices: Set<WinnablePlayCalculator> =
         setOf(
-//            WinnablePlayCalculatorFlatMapService()
-             WinnablePlayCalculatorBruteForceService()
-            )
+            WinnablePlayCalculatorFlatMapService(),
+            WinnablePlayCalculatorBruteForceService()
+        )
 
 
     @Test

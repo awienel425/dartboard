@@ -10,7 +10,7 @@ val lookupMap by lazy {
                 }
             }
         }
-    }.filter{it.wasLastDartThrownOnBoardADouble()}
+    }.filter { it.wasLastDartThrownOnBoardADouble() }
         .groupBy { it.getTotal() }
 
 }
@@ -19,7 +19,7 @@ val lookupMap by lazy {
 class WinnablePlayCalculatorBruteForceService : WinnablePlayCalculator {
     override fun calculateWinnablePlays(target: Int): Set<Play> {
         val list = lookupMap[target]?.map {
-            Play(it.dartOne,it.dartTwo,it.dartThree,target)
+            Play(it.dartOne, it.dartTwo, it.dartThree, target)
         }
         return list?.toSet() ?: emptySet()
     }

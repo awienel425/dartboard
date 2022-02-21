@@ -15,8 +15,8 @@ enum class BlockType(val multiplier: Int) { Single(1), Double(2), Triple(3) }
 data class DartThrow(val numberOnBoard: Int, val blockType: BlockType = BlockType.Single) {
     companion object {
         val MISSED_OR_DECLINED_THROW = DartThrow(0, BlockType.Single)
-        val allPossibleThrowsSorted by lazy { generateAllPossibleThrows(20).sortedBy { it.getScore() }}
-        private fun generateAllPossibleThrows(maxBlockNumber:Int): Set<DartThrow> {
+        val allPossibleThrowsSorted by lazy { generateAllPossibleThrows(20).sortedBy { it.getScore() } }
+        private fun generateAllPossibleThrows(maxBlockNumber: Int): Set<DartThrow> {
 
             return setOf(MISSED_OR_DECLINED_THROW)
                 .union(
@@ -47,11 +47,12 @@ data class DartThrow(val numberOnBoard: Int, val blockType: BlockType = BlockTyp
  * A player only get one play, consisting of 3 darts to be thrown at the board
  */
 
-data class Play(val firstThrow: DartThrow,
-                var secondThrow: DartThrow = DartThrow.MISSED_OR_DECLINED_THROW,
-                var thirdThrow: DartThrow = DartThrow.MISSED_OR_DECLINED_THROW,
-                val target:Int ): ThreeThrows(firstThrow,secondThrow,thirdThrow) {
-
+data class Play(
+    val firstThrow: DartThrow,
+    var secondThrow: DartThrow = DartThrow.MISSED_OR_DECLINED_THROW,
+    var thirdThrow: DartThrow = DartThrow.MISSED_OR_DECLINED_THROW,
+    val target: Int
+) : ThreeThrows(firstThrow, secondThrow, thirdThrow) {
 
 
     private fun getRemainder(): Int {
@@ -61,6 +62,7 @@ data class Play(val firstThrow: DartThrow,
     fun isValidSecondThrow(secondDartThrow: DartThrow): Boolean {
         return (secondDartThrow.getScore() <= getRemainder())
     }
+
     fun isValidSecondThrow(): Boolean {
         return isValidSecondThrow(dartTwo)
     }
@@ -76,7 +78,6 @@ data class Play(val firstThrow: DartThrow,
     }
 
     override fun toString(): String = "\n[$dartOne,$dartTwo,$dartThree] target=$target, totalScore=${getTotal()}"
-
 
 
 }
