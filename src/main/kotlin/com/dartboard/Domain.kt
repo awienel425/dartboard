@@ -1,4 +1,4 @@
-package com.citi.interview
+package com.dartboard
 
 /**
  * Blocktype represents the the area on the number that was hit with the dart.
@@ -15,7 +15,7 @@ enum class BlockType(val multiplier: Int) { Single(1), Double(2), Triple(3) }
 data class DartThrow(val numberOnBoard: Int, val blockType: BlockType = BlockType.Single) {
     companion object {
         val MISSED_OR_DECLINED_THROW = DartThrow(0, BlockType.Single)
-        val allPossibleThrowsSorted by lazy {generateAllPossibleThrows(20).sortedBy { it.getScore() }}
+        val allPossibleThrowsSorted by lazy { generateAllPossibleThrows(20).sortedBy { it.getScore() }}
         private fun generateAllPossibleThrows(maxBlockNumber:Int): Set<DartThrow> {
 
             return setOf(MISSED_OR_DECLINED_THROW)

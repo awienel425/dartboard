@@ -1,17 +1,17 @@
-package com.citi.interview
+package com.dartboard
 
-import com.citi.interview.DartThrow.Companion.allPossibleThrowsSorted
+import com.dartboard.DartThrow.Companion.allPossibleThrowsSorted
 
-class WinnablePlayCalculatorFlatMapService : WinnablePlayCalculator{
+class WinnablePlayCalculatorFlatMapService : WinnablePlayCalculator {
 
     companion object{
-        val addAllWinnableSecondThrows: (Play)->List<Play> ={playFromFirstThrow->
+        val addAllWinnableSecondThrows: (Play)->List<Play> ={ playFromFirstThrow->
             allPossibleThrowsSorted
                 .filter {playFromFirstThrow.isValidSecondThrow(it)}
                 .map{throwOnBoard-> playFromFirstThrow.copy(secondThrow= throwOnBoard)}
         }
 
-        val addAllWinnableThirdThrows: (Play)->List<Play> ={playFromSecondThrow->
+        val addAllWinnableThirdThrows: (Play)->List<Play> ={ playFromSecondThrow->
             allPossibleThrowsSorted
                 .filter{
                     playFromSecondThrow.isValidThirdThrow(it)
@@ -25,13 +25,13 @@ class WinnablePlayCalculatorFlatMapService : WinnablePlayCalculator{
     private fun addAllWinnableFirstThrows(target:Int):List<Play> =
          allPossibleThrowsSorted
             .filter {it.isValidFirstThrow(target)}
-            .map{Play(firstThrow = it,target=target)}
+            .map{ Play(firstThrow = it,target=target) }
 
 
 
     override fun calculateWinnablePlays(target: Int): Set<Play> =
          addAllWinnableFirstThrows(target)
-            .flatMap { addAllWinnableSecondThrows(it)}
+            .flatMap { addAllWinnableSecondThrows(it) }
             .flatMap { addAllWinnableThirdThrows(it) }
             .toSet()
 

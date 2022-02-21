@@ -1,9 +1,9 @@
-package com.citi.interview
+package com.dartboard
 
 
-import com.citi.interview.DartThrow.Companion.MISSED_OR_DECLINED_THROW
-import com.citi.interview.WinnablePlayCalculatorFlatMapService.Companion.addAllWinnableSecondThrows
-import com.citi.interview.WinnablePlayCalculatorFlatMapService.Companion.addAllWinnableThirdThrows
+import com.dartboard.DartThrow.Companion.MISSED_OR_DECLINED_THROW
+import com.dartboard.WinnablePlayCalculatorFlatMapService.Companion.addAllWinnableSecondThrows
+import com.dartboard.WinnablePlayCalculatorFlatMapService.Companion.addAllWinnableThirdThrows
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
 import org.junit.jupiter.api.Test
@@ -283,9 +283,9 @@ internal class PlayTest {
     @Test
     fun `should calculate play total`(){
         val dontCare = 200
-        val play = Play( firstThrow = DartThrow(13,BlockType.Triple),
-            DartThrow(20,BlockType.Triple),
-            DartThrow(20,BlockType.Double),target = dontCare)
+        val play = Play( firstThrow = DartThrow(13, BlockType.Triple),
+            DartThrow(20, BlockType.Triple),
+            DartThrow(20, BlockType.Double),target = dontCare)
         assertThat(play.getTotal(), equalTo(139))
 
 

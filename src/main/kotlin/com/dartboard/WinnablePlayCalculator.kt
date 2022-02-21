@@ -1,4 +1,4 @@
-package com.citi.interview
+package com.dartboard
 
 interface WinnablePlayCalculator {
 
